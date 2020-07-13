@@ -1,7 +1,16 @@
+##1. check if it is an alphabet, if it is add to the stack.
+##2. if it is an '(' then add to the stack.
+##3. if it is an ')' then pop the stack until '(' is found and at last '(' is pop.
+##4. if it is an operator:
+##    1. check length, if it is empty then add to the stack.
+##    2. if its not check the precedence if its higher then add to the stack.
+##    3. if its not pop the operator until its precedence is lower  and stop until length is 0 or '(' is found
+
+
 class Conversion:
 
     def __init__(self,capacity):
-        self.top = -1
+    
         self.capacity = capacity
         # This array is used a stack
         self.array = []
@@ -30,13 +39,12 @@ class Conversion:
 
     def infix_to_postfix(self):
         for i in self.capacity:
-
-            if i=='(':
-                self.array.append(i)
-            
-            elif i.isalpha():
+            if i.isalpha():
                 self.output.append(i)
 
+            elif i=='(':
+                self.array.append(i)
+            
             elif i==')':
                 
                 while self.array[-1]!='(':
